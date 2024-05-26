@@ -16,7 +16,7 @@ from skip.eeschema.sheet.sheet import SheetWrapper
 from skip.eeschema.lib_symbol import LibSymbolsListWrapper
 from skip.eeschema.wire import WireCollection, WireWrapper
 from skip.eeschema.label import LabelCollection, LabelWrapper
-from skip.eeschema.label import GlobalLabelCollection, GlobalLabelWrapper
+from skip.eeschema.label import HierarchicalLabelCollection, GlobalLabelCollection, GlobalLabelWrapper
 from skip.eeschema.text import TextCollection, TextWrapper
 from skip.eeschema.junction import JunctionCollection, JunctionWrapper
 import logging 
@@ -96,6 +96,7 @@ class Schematic(SourceFile):
             'wire': WireCollection,
             'label': LabelCollection,
             'global_label': GlobalLabelCollection,
+            'hierarchical_label': HierarchicalLabelCollection,
             'text': TextCollection,
             'junction': JunctionCollection
         }

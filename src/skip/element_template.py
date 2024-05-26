@@ -28,6 +28,14 @@ ElementTemplate = {
               [Symbol('effects'), [Symbol('font'), [Symbol('size'), 1.27, 1.27]], 
                [Symbol('justify'), Symbol('left'), Symbol('bottom')]], 
               [Symbol('uuid'), Symbol('SOMEUUID')]],
+
+    'hierarchical_label': [Symbol('hierarchical_label'), 'HLABEL', 
+                           [Symbol('shape'), Symbol('input')],
+                           [Symbol('at'), 25.4, 25.4, 0], 
+                           [Symbol('fields_autoplaced')], 
+                           [Symbol('effects'), [Symbol('font'), [Symbol('size'), 1.27, 1.27]], 
+                            [Symbol('justify'), Symbol('right')]], 
+                           [Symbol('uuid'), Symbol('SOMEUUID')]],
     
     
     'text': [Symbol('text'), 'hello', [Symbol('at'), 58.42, 48.26, 0], 

@@ -69,4 +69,16 @@ class GlobalLabelCollection(BaseLabelCollection):
     def _new_instance(self):
         newObj = GlobalLabelWrapper(self.parent.new_from_list(ElementTemplate['global_label']))
         return newObj
+
+class HierarchicalLabelWrapper(BaseLabelWrapper):
+    def __init__(self,v:ParsedValue):
+        super().__init__(v)
+    
+class HierarchicalLabelCollection(BaseLabelCollection):
+    def __init__(self, parent, elements:list):
+        super().__init__(parent, elements)
+        
+    def _new_instance(self):
+        newObj = HierarchicalLabelWrapper(self.parent.new_from_list(ElementTemplate['hierarchical_label']))
+        return newObj
     
