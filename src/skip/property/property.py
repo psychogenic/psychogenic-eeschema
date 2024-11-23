@@ -78,6 +78,10 @@ class PropertyString(ArbitraryNamedParsedValueWrapper):
         self._collection.append(prop)
         return prop
     
+    def delete(self):
+        self.wrapped_parsed_value.delete()
+        return None
+    
     def __repr__(self):
         return f"<PropertyString {self.name} = '{self.value}'>"
         
