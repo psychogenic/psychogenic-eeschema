@@ -20,26 +20,26 @@ class FootprintCollection(NamedElementCollection):
     '''
     def __init__(self, parent, elements:list):
         super().__init__(parent, elements, 
-                         lambda s: s.Reference.value)
+                         lambda s: s.property.Reference.value)
     
     @classmethod 
     def name_for(cls, element):
-        return element.Reference.value 
+        return element.property.Reference.value
     
     
     @classmethod 
     def set_name_for(cls, to_name:str, element):
-        element.Reference.value = to_name
+        element.property.Reference.value = to_name
         
     def reference_startswith(self, prefix:str):
         '''
         '''
-        return list(filter(lambda s: s.Reference.value.startswith(prefix), self))
+        return list(filter(lambda s: s.property.Reference.value.startswith(prefix), self))
     
     def reference_matches(self, regex:str):
         '''
         '''
-        return list(filter(lambda s: re.match(regex, s.Reference.value), self))
+        return list(filter(lambda s: re.match(regex, s.property.Reference.value), self))
     
     def value_startswith(self, prefix:str):
         return list(filter(lambda s: s.Value.value.startswith(prefix), self))
@@ -68,9 +68,16 @@ class FootprintWrapper(ElementWithPropertiesWrapper):
         super().__init__(pv)
         
         footprint_text = []
-        for fptxt in pv.fp_text:
+        if hasattr(pv, "fp_text"):
+            if isinstance(pv.fp_text, list):
+                fplist = pv.fp_text
+            else:
+                fplist = [pv.fp_text]
+        else:
+            fplist = []
+        for fptxt in fplist:
             footprint_text.append(FootprintText(fptxt))
-        
+
         self.fp_text = NamedElementCollection(self, footprint_text, lambda fptxt: fptxt.name)
         
         self._layer_handler = LayerPropertyHandler(pv.layer, self.parent)
